@@ -1,0 +1,43 @@
+
+.color-cabecera{
+	background-color: #ECECEC;
+}
+
+.carrito-img{
+    margin-top: -10px;
+    margin-left: 100px;
+    margin-bottom: 25px;
+}
+
+.carrito-img img{
+    width: 100xp;
+    height: 100px;
+}
+.body-color{
+	background: black;
+}
+.container-body{
+	background:#E5E5E5;
+	margin-top:20px;
+	margin-bottom: 20px;
+}
+.parte01{
+	float: right;
+}
+.segundo-container{
+	width:800px;
+	float: left;
+}
+.foot{
+	clear: both;
+}
+
+.footer-con{
+	
+	padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #1A1D2A;
+  color: #fff;
+   
+	
+}

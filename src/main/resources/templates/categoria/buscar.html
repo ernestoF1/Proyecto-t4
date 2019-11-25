@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" type="text/css" href="static/css/producto.css"
+	th:href="@{/css/producto.css}">
+<head th:replace="layout/layout :: head"></head>
+
+<body class="body-color">
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container container-1">
+		<h1>Categoria</h1>
+		<div class="card text-center">
+			<div class="card-body">
+
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Codigo</th>
+							<th scope="col">Nombre</th>
+							
+
+						</tr>
+					</thead>
+					<tbody th:each="categoria: ${categorias}">
+						<tr>
+							<th scope="row" th:text="${categoria.id}">1</th>
+							<td th:text="${categoria.nombre}">Mark</td>
+
+
+
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			
+		</div>
+		<a th:href="@{/categoria}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Regresar
+					</a>
+	</div>
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

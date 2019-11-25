@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css" href="static/css/mostrar.css"
+	th:href="@{/css/mostrar.css}">
+<head th:replace="layout/layout :: head"></head>
+<body class="body-color">
+	<header th:replace="layout/layout :: header"></header>
+	<div class="d-flex">
+		<div class="col-lg-3 parte01">
+			<div class="card">
+				<form>
+					<div class="card-body usuario-color">
+						<div class="col-12 usuario-img">
+							<img src="static/img/usuarioImagen.png"
+								th:src="@{/img/usuarioImagen.png}" />
+						</div>
+						<div class="form-group">
+
+							<label>Datos del Cliente</label>
+						</div>
+						<!-- 
+						<div class="form-group d-flex">
+							<div class="form-row">
+								<div class="col-sm-8 d-flex">
+									<label for="dni">Id usuario:</label> <input type="text"
+										readonly th:value="${#authentication.getPrincipal().getId()}"
+										class="form-control">
+
+								</div>
+							</div>
+
+
+						</div>
+						<div class="form-group d-flex">
+							<div class="form-row">
+								<div class="col-sm-10 d-flex">
+									<label for="username">Username:</label> <input type="text"
+										readonly
+										th:value="${#authentication.getPrincipal().getUsername()}"
+										class="form-control">
+
+								</div>
+							</div>
+
+
+						</div>
+						<div class="form-group d-flex">
+							<div class="form-row">
+								<div class="col-sm-14 d-flex">
+									<label for="nombres">Nombre:</label> <input type="text"
+										readonly
+										th:value="${#authentication.getPrincipal().getNombres()}"
+										class="form-control">
+
+								</div>
+							</div>
+						</div>
+						
+						 -->
+						<div class="form-group d-flex">
+							<div class="form-row">
+								<div class="col-sm-8 d-flex">
+									<label for="dni">Id usuario:</label> <input type="text"
+										readonly th:value="${#authentication.getPrincipal().getId()}"
+										class="form-control">
+
+								</div>
+							</div>
+
+
+						</div>
+						<div class="form-group d-flex">
+							<div class="form-row">
+								<div class="col-sm-10 d-flex">
+									<label for="username">Username:</label> <input type="text"
+										readonly
+										th:value="${#authentication.getPrincipal().getUsername()}"
+										class="form-control">
+
+								</div>
+							</div>
+
+
+						</div>
+						<div class="form-group d-flex">
+							<div class="form-row">
+								<div class="col-sm-14 d-flex">
+									<label for="nombres">Nombre:</label> <input type="text"
+										readonly
+										th:value="${#authentication.getPrincipal().getNombres()}"
+										class="form-control">
+
+								</div>
+							</div>
+						</div>
+						<div class="form-group"></div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="col-sm-9">
+			<div class="card parte02">
+				<div class="card-body">
+					<div class="d-flex ml-auto col-sm-6">
+
+						<h2>
+							<label class="text-right mt-2 col-sm-15">Mis compras</label>
+						</h2>
+
+					</div>
+					<table class="table table-dark">
+						<thead class="thead-dark">
+							<tr class="text-center">
+								<th scope="col">Codigo</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Apellido</th>
+								<th scope="col">Tipo pago</th>
+								<th scope="col">Fecha de envio</th>
+								<th scope="col">Metodo de entrega</th>
+								<th scope="col">Tipo Descuento</th>
+								<th scope="col">Total compra</th>
+							</tr>
+						</thead>
+						<tbody th:each="venta: ${usuario.listaVenta}">
+
+							<tr class="text-center">
+								<th scope="row" th:text="${venta.id}">1</th>
+								<td th:text="${venta.usuario.nombres}">Mark</td>
+								<td th:text="${venta.usuario.apellidos}">Mark</td>
+								<td th:text="${venta.tipoPago.nombre}">Mark</td>
+								<td th:text="${venta.fecha_envio}">Mark</td>
+								<td th:text="${venta.metodoentrega.nombre}">Mark</td>
+								<td th:text="${venta.descuento_nombre}">Mark</td>
+								<td th:text="${venta.total}">Mark</td>
+								
+
+
+							</tr>
+
+						</tbody>
+						
+					</table>
+					<div class="col-sm-6 ">
+
+						<a th:href="@{/}" class="btn btn-outline-danger"> Regresar </a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+</body>
+</html>

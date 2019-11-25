@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+
+
+</head>
+<body>
+
+	<div class="row">
+		<div class="col-lg-11">
+			<h1 class="page-header">
+				Producto <small> Pagina detalle del producto</small>
+			</h1>
+		</div>
+	</div>
+	<hr>
+	<div class="row">
+		<!-- left category  -->
+		<div class="col-md-6">
+
+
+
+			<img src="static/images/${producto.imagen}"
+				th:src="@{/images/productos/}+${producto.imagen}" width="350" />
+
+		</div>
+
+		<!-- right category  -->
+		<div class="col-md-6">
+			<div>
+				<h3 class="text">
+					Nombre: <span th:text="${producto.nombre}"></span>
+				</h3>
+				<div class="input-group">
+					<label>Precio : </label>
+					<p th:text="  ${producto.precio}"></p>
+				</div>
+				<div class="row">
+				<!--  
+					<div class="col-lg-3 col-md-2">
+						<span class="input-group-addon">Quantity</span> <input
+							id="quantity-input" type="text" class="form-control"
+							placeholder="0" aria-describedby="quantity-input">
+
+					</div>
+					-->
+					<div class="col-lg-3 col-md-3">
+						<a th:href="@{/}" class="btn btn-primary"> <i
+							class="fas fa-undo"></i> Regresar
+						</a><!--   <a
+							th:href="@{ '/usuario/agregarproductodetalle/' + ${producto.id}}"
+							class="btn btn-outline-dark"> <i
+							class="fas fa-cart-arrow-down"></i> Agregar
+
+						</a>
+						-->
+					</div>
+				</div>
+				<br />
+				<div class="row">
+					<table class="table">
+						<thead>
+							<tr>
+								<td>Product Details</td>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Id:</td>
+								<td th:text="${producto.id}">Mark</td>
+							</tr>
+							<tr>
+								<td>Precio:</td>
+								<td th:text="${producto.precio}">Mark</td>
+							</tr>
+							<tr>
+								<td>Modelo:</td>
+								<td th:text="${producto.modelo.nombre}">Mark</td>
+							</tr>
+							<tr>
+								<td>Categoria:</td>
+								<td th:text="${producto.modelo.categoria.nombre}">Mark</td>
+							</tr>
+							<tr>
+								<td>Stock:</td>
+								<td th:text="${producto.stock}">Mark</td>
+
+							</tr>
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

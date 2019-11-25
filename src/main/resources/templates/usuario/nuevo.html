@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1>Nuevo Usuario</h1>
+
+		<div class="card">
+			<div class="card-header">Registro de nuevo usuario</div>
+			<div class="card-body">
+
+				<div th:if="${dangerNuevo}" class="alert alert-danger" role="alert">
+					<span th:text="${dangerRegister}"></span>
+				</div>
+				<form th:action="@{/usuario/save}" th:object="${usuario}"
+					method="post">
+					<div class="form-group">
+						<label for="username">Username:</label> <input type="text"
+							class="form-control" placeholder="ingrese nombre usuario"
+							th:field="*{username}">
+					</div>
+					<div class="form-group">
+						<label for="password">Password:</label> <input type="password"
+							class="form-control" placeholder="ingrese password"
+							th:field="*{password}">
+					</div>
+
+					<div class="form-group">
+						<label for="apellidos">Apellidos:</label> <input type="text"
+							class="form-control" placeholder="ingrese apellidos"
+							th:field="*{apellidos}">
+					</div>
+					<div class="form-group">
+						<label for="nombres">Nombre:</label> <input type="text"
+							class="form-control" placeholder="ingrese nombre"
+							th:field="*{nombres}">
+					</div>
+					<div class="form-group">
+						<label for="fechaNacimiento">Fecha de nacimiento:</label> <input
+							type="text" class="form-control" placeholder="2010/05/20"
+							th:field="*{fechaNacimiento}">
+					</div>
+					<div class="form-group">
+						<label for="lugarNacimiento">Lugar de nacimiento:</label> <input
+							type="text" class="form-control" placeholder="ingrese ciudad"
+							th:field="*{lugarNacimiento}">
+					</div>
+					<div class="form-group">
+						<label for="sexo">Sexo(M/F):</label> <input type="text"
+							class="form-control" placeholder="ingrese sexo"
+							th:field="*{sexo}">
+					</div>
+
+					<div class="form-row">
+
+						<div class="form-group col-md-4">
+							<label for="tipousuario">Tipo Usuario:</label> <select
+								th:field="*{tipousuario}" class="form-control">
+								<!-- option th:each="nombre de la tabla de la clase"  -->
+								<option th:each="tipoUsu : ${tipoUsuarios}"
+									th:value="${tipoUsu.id}" th:text="${tipoUsu.nombre}"></option>
+							</select>
+						</div>
+
+					</div>
+					<!--  
+					<div class="form-group">
+						<label for="cargo">Cargo:</label>
+						 <select th:field="*{cargo}" class="form-control">
+							<option th:value="Clienteuno" th:text="Clienteuno"></option>
+							<option th:value="Clientedos" th:text="Clientedos"></option>
+						</select>
+
+					</div>
+-->
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Registrar
+					</button>
+					<a th:href="@{/}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

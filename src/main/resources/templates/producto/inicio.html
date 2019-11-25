@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" type="text/css"
+	href="static/css/producto.css" th:href="@{/css/producto.css}">
+<head th:replace="layout/layout :: head"></head>
+
+<body class="body-color">
+<header th:replace="layout/layout :: header"></header>
+
+
+<div class="container container-1">
+
+		<h1>Lista de Productos</h1>
+
+		<div class="card text-center">
+			<div class="card-header">Lista de productos</div>
+			<div class="card-footer text-muted">
+				<!--  <a  sec:authorize="hasRole('ROLE_ADMIN')"  th:href="@{/producto/nuevo}"  class="btn btn-outline-primary"><i class="fas fa-file-alt"></i> Nuevo Producto</a>-->
+			</div>
+			
+			<form action="producto/buscar" class="form-inline my-2 my-lg-0">
+					<input  class="form-control mr-sm-2" type="search"
+						placeholder="Id producto" aria-label="Search" name=id>
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+			</form>
+			<div class="card-body">
+				
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+  					<span th:text="${dangerDel}"></span>
+				</div>
+			
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Codigo</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Precio</th>
+							<th scope="col">Stock</th>
+							<th sec:authorize="hasRole('ROLE_EMPLOYEE')"  scope="col">Edit / Delete</th>
+						</tr>
+					</thead>
+					<tbody th:each="producto: ${productos}">
+						<tr>
+							<th scope="row" th:text="${producto.id}">1</th>
+							<td th:text="${producto.nombre}">Mark</td>
+							<td th:text="${producto.precio}">Otto</td>
+							<td th:text="${producto.stock}">@mdo</td>
+							
+							<td>
+								
+								<a sec:authorize="hasRole('ROLE_EMPLOYEE')"  th:href="@{ '/producto/edit/' + ${producto.id} }" class="btn btn-warning"> 
+									<i class="fas fa-edit"></i> 
+								</a>
+								<a sec:authorize="hasRole('ROLE_EMPLOYEE')"  th:href="@{ '/producto/del/' + ${producto.id} }" class="btn btn-danger"> 
+									<i class="fas fa-trash-alt"></i> 
+								</a>							
+							</td>
+							
+						</tr>						
+					</tbody>
+				</table>
+
+			</div>
+			
+		</div>
+
+	</div>
+
+
+
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

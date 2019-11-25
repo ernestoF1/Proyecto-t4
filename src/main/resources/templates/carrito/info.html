@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css"
+	href="static/css/carrito-info.css" th:href="@{/css/carrito-info.css}">
+<head th:replace="layout/layout :: head">
+
+</head>
+
+<body>
+<div class="body-color">
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="cont">
+		<div class="titulo-head">
+			<h3>Carrito de compra</h3>
+		</div>
+		<div class="container container-position">
+			<div class="card text-center">
+				<table>
+
+					<thead class="head-cuadro">
+
+						<tr>
+							<th rowspan="1"></th>
+							<th rowspan="1"><span>Descripcion del producto</span></th>
+							<th rowspan="1">&nbsp;</th>
+							<th rowspan="1"><span>Precio unitario</span></th>
+							<th rowspan="1"><span>Cantidad</span></th>
+							<th rowspan="1"><span>Quitar</span></th>
+						</tr>
+
+					</thead>
+					<tfoot>
+						<tr>
+							<td><a th:href="@{/}" class="btn btn-primary"> Regresar
+							</a></td>
+						</tr>
+					</tfoot>
+
+					<tbody class="body-cuadro">
+						<tr th:each="carrito: ${usuario.listacarrito}">
+							<td class="imagen-info">
+								<div>
+									<img src="static/images/${producto.imagen}"
+										th:src="@{/images/productos/}+${carrito.producto.imagen}"
+										width="100">
+								</div>
+							</td>
+							<td>
+								<h6>
+									<a th:text="${carrito.producto.nombre}"></a>
+								</h6>
+							</td>
+							<td><a th:href="@{ '/carrito/edit/' + ${carrito.id} }"
+								class="btn btn-warning"> <i class="fas fa-trash-alt"></i>Editar
+							</a></td>
+							<td>
+								<h6>
+									<a th:text="${carrito.producto.precio}"></a>
+								</h6>
+							</td>
+							<td>
+								<h6>
+									<a th:text="${carrito.cantidad}"></a>
+								</h6>
+							</td>
+							
+							<td><a th:href="@{ '/carrito/del/' + ${carrito.id} }"
+								class="btn btn-danger"> <i class="fas fa-trash-alt"></i>Eliminar
+							</a></td>
+
+
+						</tr>
+
+
+					</tbody>
+				</table>
+
+			</div>
+		</div>
+		<div>
+			<div class="col-sm-6 ml-auto d-flex">
+				<label class=" col-sm-6 text-right mt-2">Total a Pagar </label>
+				<h1 th:text="${'S/.'+total}"
+					class="form-control text-center font-weight-bold"
+					style="font-size: 20px;"></h1>
+			</div>
+		</div>
+		<div class="registrar">
+			<a
+				th:href="@{ '/venta/nuevo/' + ${#authentication.getPrincipal().getId()} }"
+				class="btn btn-outline-secondary"> <i class="fas fa-file"></i>
+				Registrar compra
+			</a>
+		</div>
+	</div>
+
+</div>
+
+<div class="footer-con">
+<footer th:replace="layout/layout :: footer"></footer>
+</div>
+</body>
+
+</html>

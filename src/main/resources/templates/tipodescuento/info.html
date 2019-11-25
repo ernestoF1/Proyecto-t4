@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+
+	<div class="container">
+
+		<h1>Informacion de Tipo de Descuento</h1>
+
+		<div class="card text-center">
+			<div class="card-header">Informacion de Tipo Descuento</div>
+			<div class="card-body">
+
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+					<span th:text="${dangerDel}"></span>
+				</div>
+
+
+				<form>
+					<div class="form-group row">
+						<label for="nombre" class="col-sm-2 col-form-label">Nombre
+							de Tipo Descuento :</label>
+						<div class="col-sm-10">
+							<input type="text" readonly th:value="${tipodescuento.nombre}"
+								class="form-control-plaintext">
+						</div>
+					</div>
+
+
+				</form>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Precio</th>
+							
+						</tr>
+					</thead>
+					<tbody th:each="descuento: ${tipodescuento.descuentos}">
+						<tr>
+							<th scope="row" th:text="${descuento.id}">1</th>
+							<td th:text="${descuento.precio}">Mark</td>
+							
+							
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			<div class="card-footer text-muted">
+				<a th:href="@{/tipodescuento}" class="btn btn-success"><i
+					class="fas fa-file-alt"></i> Regresar Tipo Descuento</a> <a
+					sec:authorize="hasRole('ROLE_EMPLOYEE')"
+					th:href="@{'/tipodescuento/' + ${tipodescuento.id} + '/nuevodescuento/'}"
+					class="btn btn-primary"> <i class="fas fa-file-alt"></i> Nuevo
+					Descuento
+				</a>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

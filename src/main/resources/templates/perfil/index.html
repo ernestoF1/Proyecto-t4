@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" type="text/css"
+	href="static/css/perfil.css" th:href="@{/css/perfil.css}">
+<head th:replace="layout/layout :: head"></head>
+<body class="body-color">
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container container-1">
+
+		<div class="card mt-5" >
+			<div class="card-header "><h5> <i class="fas fa-address-card"></i> Perfil</h5></div>
+			<div class="card-body ">
+				<h5 class="card-title">Detalles del Usuario: </h5>
+				<p class="card-text">Username: <span sec:authentication="name">Juan</span> </p>
+				<p class="card-text">Authorities: <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span> </p>
+				
+				<p class="card-text">Username from Authentication Class: <span th:text="${currentPrincipalName}"></span> </p>
+				<p class="card-text">Apellidos: <span th:text="${#authentication.getPrincipal().getApellidos()}"></span> </p>
+				<p class="card-text">Nombres: <span th:text="${#authentication.getPrincipal().getNombres()}"></span> </p>
+				<!--  <p class="card-text">TipoUsuario: <span th:text="${#authentication.getPrincipal().getTipoUsuario()}"></span> </p>--> 
+				
+				
+				
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

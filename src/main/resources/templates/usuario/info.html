@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+<header th:replace="layout/layout :: header"></header>
+	<div class="col-12">
+		<h2>Ventas</h2>
+
+		<div class="table-responsive">
+			<table class="table table-bordered">
+				<thead>
+					<tr>
+						<th scope="col">Codigo</th>
+						<th scope="col">Nombre del comprador</th>
+						<th scope="col">Fecha De emision</th>
+						<th scope="col">Fecha De envio</th>
+						<th scope="col">Tipo usuario</th>
+						<th scope="col">Estado de venta</th>
+						<th scope="col">Total compra</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="venta: ${usuario.listaVenta}">
+						<th scope="row" th:text="${venta.id}">1</th>
+						<td scope="row" th:text="${venta.nombre}">Mark</td>
+						<td scope="row" th:text="${venta.fechaYHora}">Mark</td>
+					    <td scope="row" th:text="${venta.fecha_envio}">Mark</td>
+						<td scope="row" th:text="${venta.usuario.tipousuario.nombre}">Mark</td>
+						<td scope="row" th:text="${venta.estado}">Mark</td>
+						<td scope="row" th:text="${venta.total}">Mark</td>
+						
+
+					</tr>
+				</tbody>
+			</table>
+			<a th:href="@{/usuario}" class="btn btn-danger"> <i
+				class="fas fa-undo"></i> Regresar
+			</a>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ <link rel="stylesheet" type="text/css" href="static/css/inicio.css" th:href="@{/css/inicio.css}">
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+<header th:replace="layout/layout :: header"></header>
+	<div class="container cabecera ">
+		<h1>Lista de Usuarios</h1>
+
+		<div class="card text-center">
+			<div class="card-header ">Lista de usuarios</div>
+			<div class="card-body body-color">
+
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+  					<span th:text="${dangerDel}"></span>
+				</div>
+				
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+						    <th scope="col">Codigo</th>
+						    <th scope="col">Username</th>
+							<th scope="col">Apellidos</th>
+							<th scope="col">Nombres</th>
+							<th scope="col">Fecha Nacimiento</th>
+							<th scope="col">Lugar Nacimiento</th>
+							<th scope="col">Sexo</th>
+							<th scope="col">Tipo usuario</th>
+							<th scope="col">Edit / Delete</th>
+							<th scope="col"></th>
+						
+						
+							
+						</tr>
+					</thead>
+					<tbody th:each="usuario: ${usuarios}">
+						<tr>
+							<td th:text="${usuario.id}">@mdo</td>
+							<td th:text="${usuario.username}">@mdo</td>
+							
+							<td th:text="${usuario.apellidos}">@mdo</td>
+							<td th:text="${usuario.nombres}">Otto</td>
+							<td th:text="${usuario.fechaNacimiento}">@mdo</td>
+							<td th:text="${usuario.lugarNacimiento}">Otto</td>
+							<td th:text="${usuario.sexo}">Otto</td>
+							<td th:text="${usuario.tipousuario.nombre}">Otto</td>
+							<td>
+							
+							<a th:href="@{ '/usuario/del/' + ${usuario.id} }"
+								class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+							</a>
+							</td>
+							<td>
+							<a th:href="@{ '/usuario/info/' + ${usuario.username} }" class="btn btn-outline-primary"> 
+									Compras Realizadas
+								</a>
+							</td>
+							 <!-- 
+							<td>
+							<a th:href="@{ '/usuario/edit/' + ${usuario.id} }"
+								class="btn btn-warning"> <i class="fas fa-edit"></i>
+							</a> 
+							
+							<a th:href="@{ '/usuario/del/' + ${usuario.id} }"
+								class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+							</a>
+							
+							</td>
+							<td>
+							
+							</td>
+							-->
+						</tr>
+					
+					
+					</tbody>
+				</table>
+
+			</div>
+			<div class="card-footer text-muted">
+					<a th:href="@{/}" class="btn btn-success"> <i
+						class="fas fa-file-alt"></i> Pagina Principal
+				</a>
+			</div>
+			
+		</div>
+
+	</div>
+
+
+
+</body>
+</html>

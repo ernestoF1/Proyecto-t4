@@ -1,0 +1,29 @@
+
+.tabla-color-cabecera{
+	background-color: #C8CFDA;
+}
+.tabla-color-cuerpo{
+	background-color: #EBEAEA;
+}
+.usuario-color{
+	background-color: #F1F2F4;
+}
+
+.usuario-img{
+    margin-top: -10px;
+    margin-left: 10px;
+    margin-bottom: 25px;
+}
+
+.usuario-img img{
+    width: 100xp;
+    height: 100px;
+   
+}
+.boton-color-cancelar{
+	background-color: #9C3636;
+}
+
+.body-color{
+	background: #F0E8E3;
+}

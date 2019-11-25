@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1>Edicion de categoria</h1>
+
+		<div class="card">
+			<div class="card-header">Edicion categoria</div>
+			<div class="card-body">
+
+				<form th:action="@{/categoria/save}" th:object="${categoria}" method="post">
+
+					<div class="form-group">
+						<label for="nombre">Nombre de categoria</label><input type="text" 
+						class="control-label col-md-3" placeholder="Nombre de Categoria" 
+						th:field="*{nombre}" />
+						
+					</div>
+
+					
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Grabar
+					</button>
+					<a th:href="@{/categoria}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+
+
+	</div>
+
+</body>
+</html>

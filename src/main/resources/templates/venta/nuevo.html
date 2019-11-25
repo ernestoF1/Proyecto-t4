@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+ <link rel="stylesheet" type="text/css" href="static/css/nuevaventa.css" th:href="@{/css/nuevaventa.css}">
+<head th:replace="layout/layout :: head">
+
+</head>
+<body class="body-color">
+<header th:replace="layout/layout :: header"></header>
+	<div class="container container-body">
+		<h1>Registro de compra</h1>
+
+		
+		<div class="col-lg-3 parte01">
+			<div class="card">
+				<form>
+					<div class="card-body usuario-color">
+						
+						<div class="form-group">
+
+							<label>Datos del Cliente</label>
+						</div>
+						<div class="form-group d-flex">
+							<div class="form-row">
+								<div class="col-sm-8 d-flex">
+									<label for="dni">Id usuario:</label> <input type="text"
+										readonly th:value="${#authentication.getPrincipal().getId()}"
+										class="form-control">
+
+								</div>
+							</div>
+
+
+						</div>
+						<div class="form-group d-flex">
+							<div class="form-row">
+								<div class="col-sm-10 d-flex">
+									<label for="username">Username:</label> <input type="text"
+										readonly
+										th:value="${#authentication.getPrincipal().getUsername()}"
+										class="form-control">
+
+								</div>
+							</div>
+
+
+						</div>
+						<div class="form-group d-flex">
+							<div class="form-row">
+								<div class="col-sm-14 d-flex">
+									<label for="nombres">Nombre:</label> <input type="text"
+										readonly
+										th:value="${#authentication.getPrincipal().getNombres()}"
+										class="form-control">
+
+								</div>
+							</div>
+
+
+						</div>
+						
+						
+
+
+
+						<div class="form-group"></div>
+
+
+						
+
+
+					</div>
+				</form>
+			</div>
+		</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<div class="card segundo-container">
+		
+			<div class="card-header ">Registro compra</div>
+			
+			<div class="card-body color-cabecera">
+
+				<form th:action="@{/venta/save}" th:object="${venta}"
+					method="post">
+
+
+					<div class="col-13 carrito-img">
+                      <img src="static/images/comprar.jpg" th:src="@{/images/comprar.jpg}"/>
+                    </div>
+					<div class="form-group">
+						<label for="fecha_envio">Fecha de envio</label> <input
+							type="text" class="control-label col-md-3"
+							placeholder="2019/01/10" th:field="*{fecha_envio}" />
+
+					</div>
+					
+					
+					<div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="tipoPago">Tipo Pago:</label> 
+						<select th:field="*{tipoPago}" class="form-control">
+						<!-- option th:each="nombre de la tabla de la clase"  -->
+					      <option th:each="tipoPago : ${tipoPagos}"
+					      	th:value="${tipoPago.id}" th:text="${tipoPago.nombre}"></option>
+					    </select>
+					
+					</div>
+					 </div>
+					 <div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="metodoEntrega">Metodo Entrega:</label> 
+						<select th:field="*{metodoentrega}" class="form-control">
+						<!-- option th:each="nombre de la tabla de la clase"  -->
+					      <option th:each="metodo: ${metodoEntregas}"
+					      	th:value="${metodo.id}" th:text="${metodo.nombre}"></option>
+					    </select>
+					
+					</div>
+					 </div>
+					 
+					  <div class="form-row">
+					<div class="form-group col-md-3">
+						<label for="descuento">Descuentos %:</label> 
+						<select th:field="*{descuento}" class="form-control">
+						<!-- option th:each="nombre de la tabla de la clase"  -->
+					      <option th:each="descuentos: ${descuentos}"
+					      	th:value="${descuentos.id}" th:text="${descuentos.precio}"></option>
+					    </select>
+					
+					</div>
+					 </div>
+					
+
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Guardar
+					</button>
+					<a th:href="@{/}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+		<footer class="foot">
+		
+		</footer>
+		
+		</div>
+
+<div class="footer-con">
+<footer th:replace="layout/layout :: footer"></footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" type="text/css"
+	href="static/css/categoria.css" th:href="@{/css/categoria.css}">
+<head th:replace="layout/layout :: head"></head>
+
+<body class="body-color">
+	
+
+<header th:replace="layout/layout :: header"></header>
+
+	<div class="container container-1">
+
+
+		<h1>Lista de categorias</h1>
+
+		<div class="card text-center">
+			<div class="card-header">Lista de categorias</div>
+			<div class="card-footer text-muted">
+				<a sec:authorize="hasRole('ROLE_EMPLOYEE')" th:href="@{/categoria/nuevo}" class="btn btn-outline-primary"><i
+					class="fas fa-file-alt"></i> Nueva Categoria</a>
+				
+			</div>
+			<form action="categoria/buscar" class="form-inline my-2 my-lg-0">
+					<input  class="form-control mr-sm-2" type="search"
+						placeholder="Id categoria" aria-label="Search" name=id>
+					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+			</form>
+			<div class="card-body">
+
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+					<span th:text="${dangerDel}"></span>
+				</div>
+
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Codigo</th>
+							<th scope="col">Nombre de Categoria</th>
+							<th scope="col">Informacion</th>
+								<!-- si  no eres admin  desaparece esta opción -->
+							<th sec:authorize="hasRole('ROLE_EMPLOYEE')" scope="col">Edit / Delete</th>
+						</tr>
+					</thead>
+					<tbody th:each="categoria: ${categorias}">
+						
+						<tr>
+							<th scope="row" th:text="${categoria.id}">1</th>
+							<td th:text="${categoria.nombre}">Mark</td>
+
+
+							<td>
+							<a th:href="@{ '/categoria/info/' + ${categoria.id} }" class="btn btn-outline-success"> 
+									<i class="fas fa-info"></i> Seleccionar
+								</a>
+							</td>
+							<td>
+							<!-- si  no eres admin  desaparece esta opción -->
+							<a sec:authorize="hasRole('ROLE_EMPLOYEE')" th:href="@{ '/categoria/edit/' + ${categoria.id} }"
+								class="btn btn-warning"> <i class="fas fa-edit"></i>
+							</a> 
+							<!-- si  no eres admin  desaparece esta opción -->
+							<a sec:authorize="hasRole('ROLE_EMPLOYEE')" th:href="@{ '/categoria/del/' + ${categoria.id} }"
+								class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+							</a></td>
+							
+						</tr>
+					</tbody>
+				</table>
+
+			</div>
+			
+		</div>
+
+
+	</div>
+
+
+<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

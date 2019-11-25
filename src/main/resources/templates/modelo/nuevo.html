@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css"
+	href="static/css/modelo.css" th:href="@{/css/modelo.css}">
+<head th:replace="layout/layout :: head"></head>
+
+<body class="body-color">
+
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container container-1">
+
+		<h1>Nuevo Modelo</h1>
+
+		<div class="card">
+			<div class="card-header">Registro de nuevo modelo</div>
+			<div class="card-body">
+
+				<form th:action="@{/modelo/save}" th:object="${modelo}"
+					method="post">
+					
+					<div class="form-group">
+						<label for="nombre">Nombre Modelo</label><input type="text" 
+						class="control-label col-md-3" placeholder="Nombre de Modelo" 
+						th:field="*{nombre}" />
+						
+					</div>
+					<div class="form-group">
+						<label for="imagen">Imagen</label><input type="text" 
+						class="control-label col-md-3" placeholder="M-XboxOneX.jpg" 
+						th:field="*{imagen}" />
+						
+					</div>
+					
+					<div class="form-group">
+						<label for="categoria">Categoria:</label> 
+						<select th:field="*{categoria}" class="form-control">
+						<!-- option th:each="nombre de la tabla de la clase"  -->
+					      <option th:each="categorias : ${categorias}"
+					      	th:value="${categorias.id}" th:text="${categorias.nombre}"></option>
+					    </select>
+					
+					</div>
+
+
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Grabar
+					</button>
+					<a th:href="@{/modelo}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+	
+</body>
+</html>

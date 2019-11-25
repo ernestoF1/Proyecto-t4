@@ -1,0 +1,78 @@
+create database ProyectoWebFinal
+
+
+use ProyectoWebFinal
+
+select * from users
+
+
+insert into categorias values ('Celulares')
+insert into categorias values ('Camara')
+insert into categorias values ('Pc')
+insert into categorias values ('Juegos')
+
+insert into modelos values ('Samsung_logo.jpg','Samsumg',1)
+insert into modelos values ('huawei_logo.jpg','Huawei',1)
+insert into modelos values ('xiaomi_logo.jpg','Xiaomi',1)
+insert into modelos values ('Canon_logo.jpg','Canon',2)
+insert into modelos values ('Sony_logo.jpg','Sony',2)
+insert into modelos values ('Asus_logo.jpg','Asus',3)
+insert into modelos values ('HP_logo.jpg','Hp',3)
+insert into modelos values ('Ps3_logo.jpg','Ps3',4)
+insert into modelos values ('Ps4_logo.jpg','Ps4',4)
+insert into modelos values ('NintendoSwitch_logo.jpg','Nintendo Switch',4)
+
+insert into productos values ('P-Samsung-Galaxy NOTE-10.jpg','Galaxy Note 10',3900,30,1)
+insert into productos values ('P-SAMSUNG-S7-EDGE.jpg','S7 Edge',1800,20,1)
+insert into productos values ('P-Samsung-Galaxy-S10.jpg','Galaxy S10 Plus',4900,15,1)
+insert into productos values ('P-Smart-2019 POTTER-L23.jpg','Huawei P Smart 2019',2100,30,2)
+insert into productos values ('P-Huawei-P30-Lite.jpg','Huawei P30 Lite',1700,28,2)
+insert into productos values ('P-Huawei-P30-Pro.jpg','Huawei P30 pro',2500,25,2)
+insert into productos values ('P-Huawei-Y7.jpg','Huawei Y7',2890,32,2)
+insert into productos values ('P-Huawei-Y9-2019.jpg','Huawei Y9 2019',2300,25,2)
+insert into productos values ('P-Xiaomi -Redmi-Note-7.jpg','Xiaomi  Redmi Note 7',1740,28,3)
+insert into productos values ('P-Xiaomi-Mi-8.JPG','Xiaomi Mi 8',1900,25,3)
+insert into productos values ('P-Xiaomi-Mi-A3.jpg','Xiaomi Mi A3',2090,26,3)
+insert into productos values ('P-Xiaomi-Mia1.jpg','Xiaomi Mia1',2170,20,3)
+insert into productos values ('P-Xiaomi-Redmi-7.jpg','Xiaomi Redmi 7',2500,10,3)
+insert into productos values ('C-Canon-750D.jpg','Canon 750d',2560,25,4)
+insert into productos values ('C-CANON-SX620.jpg','Canon Sx620',3400,30,4)
+insert into productos values ('C-FLASH-Speedlite-470EX-AI.jpg','FlashSpeedlite 470EX-AI',3800,20,4)
+insert into productos values ('C-Lente-EF-16-35MM-F2-8L.jpg','Lente EF 16-35MM F2.8L III USM',2700,35,4)
+insert into productos values ('C-MOUNT-ADAPTER-EF-EOS.jpg','Mount Adapter EF EOS',1000,27,4)
+insert into productos values ('C-Cámara-SONY-ILCE-7kbq.jpg','Cámara SONY ILCE-7KBQ E38',2500,30,5)
+insert into productos values ('C-SONY-DSC-RX100.jpg','SONY DSC-RX100',3000,27,5)
+insert into productos values ('C-SONY-ILCE-6000L.jpg','SONY ILCE-6000L',2200,30,5)
+insert into productos values ('C-SONY-ILCE-6500MBE38.jpg','SONY ILCE-6500MBE38',3100,27,5)
+insert into productos values ('M-PG348Q.jpg','Monitor PG348Q',2000,27,6)
+insert into productos values ('M-VG279Q.jpg','Monitor VG279Q',2240,30,6)
+insert into productos values ('T-ROG-STRIX-GTX1660TI.jpg','Tarjeta video ROG STRIX GTX1660TI',270,20,6)
+insert into productos values ('M-PRIME-H310-PLUS.jpg','Placa madre PRIME H310-PLUS',560,31,6)
+insert into productos values ('M-HP-Ink-Tank-315.jpg','Impresora HP Ink Tank 315',2800,27,7)
+insert into productos values ('M-HP-Officejet-7110.jpg','Impresora HP Officejet 7110',2290,30,7)
+insert into productos values ('M-HP-14-ck0010-14.jpg','Laptop HP 14-ck0010 14',3700,20,7)
+insert into productos values ('M-HP-15-DB0009.jpg','Laptop HP 15-DB0009',2560,31,7)
+
+insert into productos values ('J-Batman-Arkham-Asylum.jpg','Batman Arkham Asylum',70,25,8)
+insert into productos values ('J-Batman-Arkham-City.jpg','Batman Arkham city',90,20,8)
+insert into productos values ('J-MassEffect-1.jpg','Mass effect 1',100,31,8)
+insert into productos values ('J-MortalKombat-9.jpg','Mortal Kombat 9',99,20,8)
+insert into productos values ('J-The-last-of-us.jpg','The last of us',110,11,8)
+insert into productos values ('J-Batman-Arkham-Knight.jpg','Batman Arkham Knight',140,31,9)
+insert into productos values ('J-Black-ops-4.jpg','Call of Duty Black ops 4',180,20,9)
+insert into productos values ('J-Spiderman.jpg','Spider-Man',160,11,9)
+insert into productos values ('J-TheWitcher3.jpg','The Witcher 3',140,5,10)
+
+
+insert into tipopagos values ('Tarjeta')
+insert into tipopagos values ('Efectivo')
+
+insert into metodoentregas values (0.1,'Delivery')
+insert into metodoentregas values (0.05,'Presencial')
+
+insert into tipodescuentos values('Cupon')
+insert into tipodescuentos values('Codigo')
+
+insert into descuentos values (0.2,1)
+insert into descuentos values (0.15,2)
+insert into descuentos values (0.17,2)

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1 class="text">
+
+			Categoria : <span th:text="${categoria.nombre}"></span>
+		</h1>
+
+		<div class="card text-center">
+			<div class="card-header">Lista de modelos</div>
+			<div class="card-body">
+
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+					<span th:text="${dangerDel}"></span>
+				</div>
+
+
+				<div>
+
+					<div class="row">
+						<!-- left category  -->
+
+						<div th:each="modelo: ${categoria.lista_modelos}">
+
+							<div class="row">
+							 
+								<div class="col-lg-3 col-md-3">
+								Logo
+									<img class="img-responsive" src="static/images/${modelo.imagen}"  
+									th:src="@{/images/modelos/}+${modelo.imagen}" width="180">
+								</div>
+							
+							
+								
+								<div class="col-lg-3 col-md-3">
+									Nombre: <span th:text="${modelo.nombre}"></span>
+									
+								</div>
+								<div class="col-lg-3 col-md-3">
+									Codigo: <span th:text="${modelo.id}"></span>
+									
+								</div>
+								<div class="col-lg-3 col-md-3">
+									Nombre categoria: <span th:text="${modelo.categoria.nombre}"></span>
+									
+								</div>
+								<div class="col-lg-3 col-md-3" sec:authorize="hasRole('ROLE_EMPLOYEE')">
+									Edit:
+									<a 
+										th:href="@{ '/modelo/edit/' + ${modelo.id} }"
+										class="btn btn-warning"> <i class="fas fa-edit"></i>
+									</a> 
+									
+								</div>
+								<div class="col-lg-3 col-md-3" sec:authorize="hasRole('ROLE_EMPLOYEE')">
+									Delete: 
+									 <a 
+										th:href="@{ '/modelo/del/' + ${modelo.id} }"
+										class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+									</a>
+									
+								</div>
+								
+								
+							</div>
+							<hr>
+
+						</div>
+
+
+
+					</div>
+<div>
+						<a th:href="@{/categoria}" class="btn btn-success"><i
+							class="fas fa-file-alt"></i> Regresar categoria</a> <a
+							sec:authorize="hasRole('ROLE_EMPLOYEE')"
+							th:href="@{'/categoria/' + ${categoria.id} + '/nuevomodelo/'}"
+							class="btn btn-primary"> <i class="fas fa-file-alt"></i>
+							Nuevo modelo
+						</a>
+</div>
+
+				</div>
+
+				<!--  
+				<div class="row">
+
+					<div class="col-md-6"></div>
+					<div class="col-md-6">
+						<div th:each="modelo: ${categoria.lista_modelos}" class="col-5 ">
+							<div>
+								<h3 class="text">
+									Nombre: <span th:text="${modelo.nombre}"></span>
+								</h3>
+								<div class="input-group">
+									<label>Precio : </label>
+
+								</div>
+								<div class="row">
+									<div class="col-lg-3 col-md-2">
+										<div class="input-group">
+											<label>Stock :</label>
+
+										</div>
+									</div>
+									<div class="col-lg-3 col-md-3">
+
+										<a sec:authorize="hasRole('ROLE_ADMIN')"
+											th:href="@{ '/modelo/edit/' + ${modelo.id} }"
+											class="btn btn-warning"> <i class="fas fa-edit"></i>
+										</a> <a sec:authorize="hasRole('ROLE_ADMIN')"
+											th:href="@{ '/modelo/del/' + ${modelo.id} }"
+											class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+										</a>
+
+									</div>
+
+
+								</div>
+								<br />
+								<div class="row">
+									<table class="table">
+										<thead>
+											<tr>
+												<td>Categoria detalles</td>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>Id:</td>
+												<td th:text="${modelo.id}">Mark</td>
+											</tr>
+											<tr>
+												<td>Nombre categoria:</td>
+												<td th:text="${modelo.categoria.nombre}">Mark</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				-->
+				<!--
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Codigo</th>
+							<th scope="col">Nombre</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')" scope="col">Editar/Eliminar</th>
+						</tr>
+					</thead>
+					<tbody th:each="modelo: ${categoria.lista_modelos}">
+						<tr>
+							<th scope="row" th:text="${modelo.id}">1</th>
+							<td th:text="${modelo.nombre}">Mark</td>
+
+							<td><a sec:authorize="hasRole('ROLE_ADMIN')"
+								th:href="@{ '/modelo/edit/' + ${modelo.id} }"
+								class="btn btn-warning"> <i class="fas fa-edit"></i>
+							</a> <a sec:authorize="hasRole('ROLE_ADMIN')"
+								th:href="@{ '/modelo/del/' + ${modelo.id} }"
+								class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+							</a></td>
+
+						</tr>
+					</tbody>
+				</table>
+  -->
+			</div>
+
+		</div>
+
+	</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

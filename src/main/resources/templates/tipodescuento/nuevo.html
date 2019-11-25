@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css"
+	href="static/css/modelo.css" th:href="@{/css/modelo.css}">
+<head th:replace="layout/layout :: head"></head>
+
+<body class="body-color">
+
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container container-1">
+
+		<h1>Nuevo Tipo Descuento</h1>
+
+		<div class="card">
+			<div class="card-header">Registro de nuevo Tipo Descuento</div>
+			<div class="card-body">
+
+				<form th:action="@{/tipodescuento/save}" th:object="${tipodescuento}"
+					method="post">
+					
+					<div class="form-group">
+						<label for="nombre">Nombre TipoDescuento</label><input type="text" 
+						class="control-label col-md-3" placeholder="Nombre" 
+						th:field="*{nombre}" />
+						
+					</div>
+					
+					
+					
+
+
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Grabar
+					</button>
+					<a th:href="@{/tipodescuento}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+	
+</body>
+</html>

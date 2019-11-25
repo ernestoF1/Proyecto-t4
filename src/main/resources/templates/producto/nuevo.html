@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1>Nuevo Producto</h1>
+
+		<div class="card">
+			<div class="card-header">Registro de nuevo producto</div>
+			<div class="card-body">
+
+				<form th:action="@{/producto/save}" th:object="${producto}"
+					method="post">
+					
+					<div class="form-group">
+						<label for="nombre">Nombre</label><input type="text" 
+						class="control-label col-md-3" placeholder="Nombre de Producto" 
+						th:field="*{nombre}" />
+						
+					</div>
+
+					<div class="form-group">
+						<label for="precio">Precio</label><input type="text" 
+						class="control-label col-md-3" placeholder="Precio de producto" 
+						th:field="*{precio}" />
+						
+					</div>
+					
+					<div class="form-group">
+						<label for="stock">Stock</label><input type="text" 
+						class="control-label col-md-3" placeholder="Stock de Producto" 
+						th:field="*{stock}" />
+						
+					</div>
+					
+					<div class="form-group">
+						<label for="modelo">Modelos:</label> 
+						<select th:field="*{modelo}" class="form-control">
+						<!-- option th:each="nombre de la tabla de la clase"  -->
+					      <option th:each="modelos : ${modelos}"
+					      	th:value="${modelos.id}" th:text="${modelos.nombre}"></option>
+					    </select>
+					
+					</div>
+				    
+					
+
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Grabar
+					</button>
+					<a th:href="@{/producto}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+	
+</body>
+</html>

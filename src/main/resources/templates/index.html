@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<link rel="stylesheet" type="text/css"
+	href="static/css/index.css" th:href="@{/css/index.css}">
+<head th:replace="layout/layout :: head"></head>
+<body class="body-color">
+	<header th:replace="layout/layout :: header"></header>
+
+
+	<div id="carouselExampleSlidesOnly" class="carousel slide"
+		data-ride="carousel">
+		<div class="carousel-inner">
+			<div class="carousel-item active">
+				<img src="static/img/bannerCelulares.png"
+					th:src="@{/img/bannerCelulares.png}" class="d-block w-100"
+					alt="...">
+			</div>
+			<div class="carousel-item ">
+				<img src="static/img/bannerJuego.jpg"
+					th:src="@{/img/bannerJuego.jpg}" class="d-block w-100" alt="...">
+			</div>
+		</div>
+	</div>
+
+
+	<div class="container">
+		<!--cards-->
+		<div class="row">
+			<div th:each="post:${productos}" class="col-3 ">
+				<div class="card" style="width: 16rem;">
+					 <img src="static/images/${post.imagen}" th:src="@{/images/productos/}+${post.imagen}" width="180" height="200">
+					<div class="card-body">
+
+						<h5 th:text="${post.nombre}" class="card-title">Card title</h5>
+						<h6>Precio</h6>
+						<p th:text="${post.precio}" class="card-text"></p>
+
+						<a th:href="@{ '/info/' + ${post.id} }"
+							class="btn btn-outline-primary">
+							Detalles
+						</a>
+						
+						<a sec:authorize="hasRole('ROLE_CUSTOMER')" th:href="@{ '/usuario/agregarproducto/' + ${post.id} }"
+							class="btn btn-outline-dark"> <i
+									class="fas fa-cart-arrow-down"></i> Agregar unidad
+							
+						</a>
+						
+						
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+
+
+
+	<div class="container">
+
+		<h1>Nueva Categoria</h1>
+
+		<div class="card">
+			<div class="card-header">Registro de nueva categoria</div>
+			<div class="card-body">
+
+				<form th:action="@{/categoria/save}" th:object="${categoria}"
+					method="post">
+					
+					<div class="form-group">
+						<label for="nombre">Nombre Categoria</label><input type="text" 
+						class="control-label col-md-3" placeholder="Nombre de Categoria" 
+						th:field="*{nombre}" />
+						
+					</div>
+
+
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Grabar
+					</button>
+					<a th:href="@{/categoria}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1>Informacion de Modelo</h1>	
+
+		<div class="card text-center">
+			<div class="card-header">
+			<h4 class="text col-lg-3 col-md-5" >Nombre de Modelo:
+			<span th:text="${modelo.nombre}"></span>
+			</h4>
+			
+			<img class="img-responsive" src="static/images/${modelo.imagen}" th:src="@{/images/modelos/}+${modelo.imagen}" width="200">
+			
+			</div>
+			<div class="card-body">
+
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+					<span th:text="${dangerDel}"></span>
+				</div>
+
+
+				<div class="row">
+					<!-- left category  -->
+
+					<div th:each="producto: ${modelo.lista_productos}">
+
+						<div class="row">
+
+							<div class="col-lg-3 col-md-3">
+								Logo <img class="img-responsive"
+									src="static/images/${producto.imagen}"
+									th:src="@{/images/productos/}+${producto.imagen}" width="200">
+							</div>
+
+
+
+							<div class="col-lg-3 col-md-3">
+								Id producto: <span th:text="${producto.id}"></span>
+
+							</div>
+							<div class="col-lg-3 col-md-3">
+								Nombre: <span th:text="${producto.nombre}"></span>
+
+							</div>
+							<div class="col-lg-3 col-md-3">
+								Precio: <span th:text="${producto.precio}"></span>
+
+							</div>
+							<div class="col-lg-3 col-md-3">
+								Stock: <span th:text="${producto.stock}"></span>
+
+							</div>
+							<div class="col-lg-3 col-md-3"
+								sec:authorize="hasRole('ROLE_EMPLOYEE')">
+
+								<a sec:authorize="hasRole('ROLE_EMPLOYEE')"
+									th:href="@{ '/producto/edit/' + ${producto.id} }"
+									class="btn btn-warning"> <i class="fas fa-edit"></i>
+								</a> <a sec:authorize="hasRole('ROLE_EMPLOYEE')"
+									th:href="@{ '/producto/del/' + ${producto.id} }"
+									class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+								</a>
+
+
+							</div>
+
+
+						</div>
+						<hr>
+
+					</div>
+
+
+
+				</div>
+
+
+			</div>
+			<div class="card-footer text-muted">
+				<a th:href="@{/modelo}" class="btn btn-success"><i
+					class="fas fa-file-alt"></i> Regresar Modelos</a> <a
+					sec:authorize="hasRole('ROLE_EMPLOYEE')"
+					th:href="@{'/modelo/' + ${modelo.id} + '/nuevoproducto/'}"
+					class="btn btn-primary"> <i class="fas fa-file-alt"></i> Nuevo
+					producto
+				</a>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
+
+
+
+
+
+
+
+

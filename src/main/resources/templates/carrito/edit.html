@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1>Edicion del carrito</h1>
+
+		<div class="card">
+			<div class="card-header">Edicion del carrito</div>
+			<div class="card-body">
+
+				<form th:action="@{/carrito/save}" th:object="${carrito}" method="post">
+
+					<div class="form-group">
+						<label for="cantidad">Cantidad</label><input type="text" 
+						class="control-label col-md-3" placeholder="cantidad" 
+						th:field="*{cantidad}" />
+						
+					</div>
+
+					
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Grabar
+					</button>
+					<a th:href="@{/}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	
+</body>
+</html>

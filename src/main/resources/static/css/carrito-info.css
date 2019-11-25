@@ -1,0 +1,47 @@
+
+.head-cuadro th{
+	border:1px solid #D4D3D3;
+}
+
+.imagen-info{
+	background: #ECE8E8;
+}
+.cont{
+	background:white;
+	width:1349px;
+	margin-top: 50px;
+	margin-bottom: 40px;
+}
+.container-position{
+	
+	margin:40px;
+}
+.body-cuadro td{
+	border:1px solid #D4D3D3;
+}
+.body-color{
+	background: #1A1D2A;
+}
+.titulo-head{
+	text-align: center;
+}
+.footer-pagar{
+	text-align: right;
+}
+.registrar{
+	text-align: right;
+}
+.footer-color{
+	color:white;
+}
+.tamano-footer {
+}
+.footer-con{
+	padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #1A1D2A;
+  color: #fff;
+	
+}
+
+
